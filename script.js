@@ -32,7 +32,7 @@ const saveActivity = () => {
     cache: false, 
     data: { activity: activityToSave }, 
     success: function(data){
-        // newActivity();
+        newActivity();
         console.log(data)
     },
     error: function(jqXHR, textStatus, err){

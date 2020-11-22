@@ -13,6 +13,7 @@ app.get('/', (req, res) => { // send a get request to root directory ('/' is thi
 })
 
 app.listen(PORT, () => { // start server and listen on specified port
+<<<<<<< HEAD
   console.log(`App is running on ${PORT}`) // confirm server is running and log port to the console
 }) 
 
@@ -24,3 +25,7 @@ app.listen(PORT, () => { // start server and listen on specified port
 //add index.ejs
 //use templating <%= activity %>
 //add style.css
+=======
+  console.log(`App is running on ${PORT}`) // confirm server is running and log port to the console 
+}) 
+>>>>>>> 13d5190c8fd91a8e23b6b5d41e15deaf536974d1
