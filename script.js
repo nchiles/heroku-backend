@@ -1,19 +1,9 @@
-const addActivity = () => {
-  var li = document.createElement('li');
-  let activity = document.getElementById('suggestedActivity').innerHTML;
-  var newLine = document.createTextNode(activity);
-  li.appendChild(newLine);
-  document.getElementById('activityList').appendChild(li);
-  saveActivity()
-}
-
-const newActivity = () => {
+const getActivity = () => {
   $.ajax({ 
     url: 'https://www.boredapi.com/api/activity',
     type: 'GET',
     dataType: "json",
     success: function (data) {
-        console.log(data);
         document.getElementById('suggestedActivity').innerHTML = data.activity;
     },
     error: function (error) {
@@ -22,30 +12,50 @@ const newActivity = () => {
   })
 }
 
-window.onload = newActivity();
+const addActivity = async () => {
+  await saveActivity();
+  let activity = document.getElementById('suggestedActivity').innerHTML;  
+  let newLine = document.createTextNode(activity);
+  let li = document.createElement('li');
+  li.appendChild(newLine);
+  document.getElementById('activityList').appendChild(li);
+}
 
 const saveActivity = () => {
-	let activityToSave = document.getElementById('suggestedActivity').innerHTML;				
+  let activityToSave = document.getElementById('suggestedActivity').innerHTML;
   $.ajax({ 
-    url: '/',
+    url: '/add',
     type: 'POST',
-    cache: false, 
     data: { activity: activityToSave }, 
     success: function(data){
-        newActivity();
         console.log(data)
     },
-    error: function(jqXHR, textStatus, err){
-      alert('text status '+textStatus+', err '+err)
+    error: function(err){
+      console.log(err);
     }
-  });
+  })
+  // .done(getActivity());
 };
 
+const deleteActivities = () => {
+  $.ajax({ 
+    url: '/delete',
+    type: 'POST',
+    success: function(data){
+      console.log(data);
+      document.getElementById('activityList').innerHTML = "";
+    },
+    error: function(err){
+      console.log(err);
+    }
+  })
+};
+
+window.onload = getActivity();
 
 
-//connect to DB created in GUI
-//heroku pg:psql -a heroku-fullstack-v1
-//create table
-//create table activities (activity text);
+
+
+
 
 

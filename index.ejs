@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heroku Fullstack</title>
   <link rel="stylesheet" href="style.css">
-  <script
-  src="https://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="script.js"></script>
 </head>
 <body>
   <h1 id='suggestedActivity'></h1>
-  <button id='newActivity' onclick='newActivity()'>New</button><button id='saveActivity' onclick='addActivity()'>Add</button>
+  <button id='getActivity' onclick='getActivity()'>New</button>
+  <button id='saveActivity' onclick='addActivity()'>Add</button>
+  <button id='deleteActivities' onclick='deleteActivities()'>Start Over</button>
   <ul id='activityList'>
-    
+    <% activities.forEach(function(r) { %>
+      <li><%= r.activity %></li>
+    <% }); %>
   </ul>
 </body>
 </html>
