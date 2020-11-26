@@ -1,5 +1,8 @@
-body {
-  background-color: black;
-  color: yellowgreen;
-  font-family: monospace;
+h1 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.buttons-row {
+  margin-bottom: 4rem;
 }
