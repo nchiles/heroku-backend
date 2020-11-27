@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000; // use either the host env var port (PORT
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
 	ssl: {
 		rejectUnauthorized: false
 	}
