@@ -16,13 +16,14 @@ const getActivity = () => {
   })
 }
 
-const addActivity = async () => {
+const addActivity = () => {
+  //add activity
   let activity = document.getElementById('suggestedActivity').innerHTML;  
   let newLine = document.createTextNode(activity);
   let li = document.createElement('li');
   li.appendChild(newLine);
-  await saveActivity();
-  await document.getElementById('activityList').appendChild(li);
+  saveActivity();
+  document.getElementById('activityList').appendChild(li);
 
   //increment activity count
   let activityCount = parseInt(document.getElementById('activityCount').innerHTML);
